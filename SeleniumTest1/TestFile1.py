@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver import Keys
 
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -9,8 +10,12 @@ driver = webdriver.Chrome(service=serv_obj)
 
 driver.get("https://www.amazon.com")
 
-driver.find_element(By.ID, "twotabsearchtextbox").send_keys("Nutella")
-driver.find_element(By.ID, "nav-search-submit-button").click()
+searchBox = driver.find_element(By.ID, "twotabsearchtextbox")
+searchBox.send_keys("Nutella")
+searchBox.send_keys(Keys.ENTER)
+#submitBtn = driver.find_element(By.ID, "nav-search-submit-button")
+#submitBtn.click()
+
 
 page_title = driver.title
 
